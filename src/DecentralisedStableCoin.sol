@@ -5,8 +5,8 @@
 // Layout of Contract:
 // version
 // imports
-// errors
 // interfaces, libraries, contracts
+// errors
 // Type declarations
 // State variables
 // Events
@@ -43,7 +43,7 @@ contract DecentralisedStableCoin is ERC20Burnable, Ownable {
     error DecentralisedStableCoin__BurnAmountExceedsBalance();
     error DecentralisedStableCoin__NotZeroAddress();
 
-    constructor() ERC20("Decentralised Stablecoin", "DSC") {}
+    constructor() ERC20("Dann Stablecoin", "DSC") {}
 
     function burn(uint256 _amount) public override onlyOwner {
         uint256 balance = balanceOf(msg.sender); // make sure the owner has enough balance to burn
@@ -56,10 +56,7 @@ contract DecentralisedStableCoin is ERC20Burnable, Ownable {
         super.burn(_amount); // super means to use the burn function from the parent class
     }
 
-    function mint(
-        address _to,
-        uint256 _amount
-    ) public onlyOwner returns (bool) {
+    function mint(address _to, uint256 _amount) public onlyOwner returns (bool) {
         if (_to == address(0)) {
             revert DecentralisedStableCoin__NotZeroAddress();
         }
