@@ -252,7 +252,7 @@ contract DSCEngineTest is Test {
         dsce.burnDsc(1);
     }
 
-    /*function testCanBurnDsc() public depositedCollateralAndMintedDsc {
+    function testCanBurnDsc() public depositedCollateralAndMintedDsc {
         vm.startPrank(USER);
         dsc.approve(address(dsce), amountToMint);
         dsce.burnDsc(amountToMint);
@@ -260,7 +260,7 @@ contract DSCEngineTest is Test {
 
         uint256 userBalance = dsc.balanceOf(USER);
         assertEq(userBalance, 0);
-    }*/
+    }
 
     //////////////////////////////
     // Redeem Collateral Tests ///
@@ -302,13 +302,13 @@ contract DSCEngineTest is Test {
         vm.stopPrank();
     }*/
 
-    /*function testCanRedeemCollateral() public depositedCollateral {
+    function testCanRedeemCollateral() public depositedCollateral {
         vm.startPrank(USER);
         dsce.redeemCollateral(weth, AMOUNT_COLLATERAL);
         uint256 userBalance = ERC20Mock(weth).balanceOf(USER);
         assertEq(userBalance, AMOUNT_COLLATERAL);
         vm.stopPrank();
-    }*/
+    }
 
     /*function testEmitCollateralRedeemedWithCorrectArgs() public depositedCollateral {
         vm.expectEmit(true, true, true, true, address(dsce));
@@ -321,15 +321,15 @@ contract DSCEngineTest is Test {
     /////////////////////////////////////
     // Redeem Collateral for DSC Tests //
     /////////////////////////////////////
-    /*function testMustRedeemMoreThanZero() public depositedCollateralAndMintedDsc {
+    function testMustRedeemMoreThanZero() public depositedCollateralAndMintedDsc {
         vm.startPrank(USER);
         dsc.approve(address(dsce), amountToMint);
         vm.expectRevert(DSCEngine.DSCEngine__NeedsMoreThanZero.selector);
         dsce.redeemCollateralForDsc(weth, 0, amountToMint);
         vm.stopPrank();
-    }*/
+    }
 
-    /*function testCanRedeemDepositedCollateral() public {
+    function testCanRedeemDepositedCollateral() public {
         vm.startPrank(USER);
         ERC20Mock(weth).approve(address(dsce), AMOUNT_COLLATERAL);
         dsce.depositCollateralAndMintDsc(weth, AMOUNT_COLLATERAL, amountToMint);
@@ -339,7 +339,7 @@ contract DSCEngineTest is Test {
 
         uint256 userBalance = dsc.balanceOf(USER);
         assertEq(userBalance, 0);
-    }*/
+    }
 
     /////////////////////////////////////
     //////// Health Factor Tests ////////
@@ -444,16 +444,16 @@ contract DSCEngineTest is Test {
         _;
     }
 
-    /*function testLiquidationPayoutIsCorrect() public liquidated {
+    function testLiquidationPayoutIsCorrect() public liquidated {
         uint256 liquidatorWethBalance = ERC20Mock(weth).balanceOf(LIQUIDATOR);
         uint256 expectedWeth = dsce.getTokenAmountFromUsd(weth, amountToMint)
             + (dsce.getTokenAmountFromUsd(weth, amountToMint) / dsce.getLiquidationBonus());
         uint256 hardCodeExpected = 6111111111111111110;
         assertEq(liquidatorWethBalance, hardCodeExpected);
         assertEq(liquidatorWethBalance, expectedWeth);
-    }*/
+    }
 
-    /*function testUserStillHasSomeEthAfterLiquidation() public liquidated {
+    function testUserStillHasSomeEthAfterLiquidation() public liquidated {
         // Get how much WETH the user lost
         uint256 amountLiquidated = dsce.getTokenAmountFromUsd(weth, amountToMint)
             + (dsce.getTokenAmountFromUsd(weth, amountToMint) / dsce.getLiquidationBonus());
@@ -465,17 +465,17 @@ contract DSCEngineTest is Test {
         uint256 hardCodedExpectedValue = 70000000000000000020;
         assertEq(userCollateralValueInUsd, expectedUserCollateralValueInUsd);
         assertEq(userCollateralValueInUsd, hardCodedExpectedValue);
-    }*/
+    }
 
-    /*function testLiquidatorTakesOnUserDebt() public liquidated {
+    function testLiquidatorTakesOnUserDebt() public liquidated {
         (uint256 liquidatorDscMinted,) = dsce.getAccountInformation(LIQUIDATOR);
         assertEq(liquidatorDscMinted, amountToMint);
-    }*/
+    }
 
-    /*function testUserHasNoMoreDebt() public liquidated {
+    function testUserHasNoMoreDebt() public liquidated {
         (uint256 userDscMinted,) = dsce.getAccountInformation(USER);
         assertEq(userDscMinted, 0);
-    }*/
+    }
 
     /////////////////////////////////////
     //// View & Pure Function Tests /////

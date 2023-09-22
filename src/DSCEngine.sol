@@ -169,10 +169,12 @@ contract DSCEngine is ReentrancyGuard {
      */
     function redeemCollateralForDsc(address tokenCollateralAddress, uint256 amountCollateral, uint256 amountDscToBurn)
         external
+        moreThanZero(amountCollateral)
+        nonReentrant
     {
-        burnDsc(amountDscToBurn);
-        redeemCollateral(tokenCollateralAddress, amountCollateral);
-        // redeemCollateral already checks Health Factor
+        _burnDsc(amountDscToBurn, msg.sender, msg.sender);
+        _redeemCollateral(msg.sender, msg.sender, tokenCollateralAddress, amountCollateral);
+        _revertIfHealthFactorIsBroken(msg.sender);
     }
 
     // in order to redeem collateral:
@@ -304,10 +306,11 @@ contract DSCEngine is ReentrancyGuard {
         // total DSC minted
         // total collateral VALUE
         (uint256 totalDscMinted, uint256 collateralValueInUsd) = _getAccountInformation(user);
-        uint256 collateralAdjustedForThreshold = (collateralValueInUsd * LIQUIDATION_THRESHOLD) / LIQUIDATION_PRECISION;
+        // uint256 collateralAdjustedForThreshold = (collateralValueInUsd * LIQUIDATION_THRESHOLD) / LIQUIDATION_PRECISION;
 
-        // 1000 ETH Deposited * 50 = 50,000 / 100 = 500 Health Factor
-        return (collateralAdjustedForThreshold * PRECISION) / totalDscMinted;
+        // // 1000 ETH Deposited * 50 = 50,000 / 100 = 500 Health Factor
+        // return (collateralAdjustedForThreshold * PRECISION) / totalDscMinted;
+        return _calculateHealthFactor(totalDscMinted, collateralValueInUsd);
     }
 
     // 1. Check Health Factor (Do they have enough collateral)
