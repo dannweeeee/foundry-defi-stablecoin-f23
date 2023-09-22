@@ -17,7 +17,7 @@ This project is meant to be a stablecoin where users can deposit WETH and WBTC i
     * wETH (Wrapped ETH - ERC20 Version)
     * wBTC (Wrapped BTC - ERC20 Version)
 
-General Mechanism of the DSC System:
+**General Mechanism of the DSC System:**
 * Threshold set to let's say 150%
     * User gives $100 ETH Collateral
     * $50 DSC Minted
@@ -37,7 +37,7 @@ General Mechanism of the DSC System:
 ### Quickstart
 
 ```
-git clone https://github.com/Cyfrin/foundry-defi-stablecoin-f23
+git clone https://github.com/dannweeeee/foundry-defi-stablecoin-f23
 cd foundry-defi-stablecoin-f23
 forge build
 ```
