@@ -2,7 +2,8 @@
 
 A Foundry DeFi Stablecoin Project that is part of Cyfrin Solidity Blockchain Course.
 
-* [DSCEngine on Sepolia Testnet](https://sepolia.etherscan.io/address/0xcce8d465efa8ba9b26e064cb422448d0cf963df1#code)
+1. [DSCEngine on Sepolia Testnet](https://sepolia.etherscan.io/address/0x54fd0af9bf45935aa69ecb95cd725b18a0b0a26f#code)
+2. [Dann Stablecoin on Sepolia Testnet](https://sepolia.etherscan.io/token/0x1280c3ccc4e2dbe39ceb4f75a190d49164436720)
 
 ## About
 
@@ -130,13 +131,13 @@ cast send 0xdd13E55209Fd76AfE204dBda4007C227904f0a81 "deposit()" --value 0.1ethe
 2. Approve the WETH
 
 ```
-cast send 0xdd13E55209Fd76AfE204dBda4007C227904f0a81 "approve(address,uint256)" 0x091EA0838eBD5b7ddA2F2A641B068d6D59639b98 1000000000000000000 --rpc-url $SEPOLIA_RPC_URL --private-key $PRIVATE_KEY
+cast send 0xdd13E55209Fd76AfE204dBda4007C227904f0a81 "approve(address,uint256)" 0x54FD0AF9bF45935aA69Ecb95Cd725b18a0b0A26F 1000000000000000000 --rpc-url $SEPOLIA_RPC_URL --private-key $PRIVATE_KEY
 ```
 
 3. Deposit and Mint DSC
 
 ```
-cast send 0x091EA0838eBD5b7ddA2F2A641B068d6D59639b98 "depositCollateralAndMintDsc(address,uint256,uint256)" 0xdd13E55209Fd76AfE204dBda4007C227904f0a81 100000000000000000 10000000000000000 --rpc-url $SEPOLIA_RPC_URL --private-key $PRIVATE_KEY
+cast send 0x54FD0AF9bF45935aA69Ecb95Cd725b18a0b0A26F "depositCollateralAndMintDsc(address,uint256,uint256)" 0xdd13E55209Fd76AfE204dBda4007C227904f0a81 100000000000000000 10000000000000000 --rpc-url $SEPOLIA_RPC_URL --private-key $PRIVATE_KEY
 ```
 
 

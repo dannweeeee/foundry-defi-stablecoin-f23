@@ -43,3 +43,6 @@ endif
 
 deploy:
 	@forge script script/DeployDSC.s.sol:DeployDSC $(NETWORK_ARGS)
+
+getWETH:
+	
