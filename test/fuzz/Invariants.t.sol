@@ -55,7 +55,7 @@ contract InvariantsTest is StdInvariant, Test {
     }
 
     function invariant_allGetterFunctionsShouldNotRevert() public view {
-        dsce.getHealthFactor();
+        dsce.getHealthFactor(msg.sender);
         dsce.getCollateralTokenPriceFeed(address(dsc));
         dsce.getDsc();
         dsce.getCollateralTokens();
