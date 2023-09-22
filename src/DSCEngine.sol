@@ -176,7 +176,6 @@ contract DSCEngine is ReentrancyGuard {
     function redeemCollateralForDsc(address tokenCollateralAddress, uint256 amountCollateral, uint256 amountDscToBurn)
         external
         moreThanZero(amountCollateral)
-        nonReentrant
     {
         _burnDsc(amountDscToBurn, msg.sender, msg.sender);
         _redeemCollateral(msg.sender, msg.sender, tokenCollateralAddress, amountCollateral);
@@ -207,7 +206,8 @@ contract DSCEngine is ReentrancyGuard {
         // if they mint too much ($150 DSC Minted with only $100 ETH Collateral)
         _revertIfHealthFactorIsBroken(msg.sender);
         bool minted = i_dsc.mint(msg.sender, amountDscToMint); // minting the DSC
-        if (!minted) {
+
+        if (minted != true) {
             revert DSCEngine__MintFailed();
         }
     }
@@ -275,6 +275,7 @@ contract DSCEngine is ReentrancyGuard {
      */
     function _burnDsc(uint256 amountDscToBurn, address onBehalfOf, address dscFrom) private {
         s_DSCMinted[onBehalfOf] -= amountDscToBurn; // remove the DSC Minted
+
         bool success = i_dsc.transferFrom(dscFrom, address(this), amountDscToBurn); // transfer the DSC from the user to the contract
         if (!success) {
             revert DSCEngine__TransferFailed();
