@@ -3,7 +3,7 @@
 A Foundry DeFi Stablecoin Project that is part of Cyfrin Solidity Blockchain Course.
 
 1. [DSCEngine on Sepolia Testnet](https://sepolia.etherscan.io/address/0x54fd0af9bf45935aa69ecb95cd725b18a0b0a26f#code)
-2. [Dann Stablecoin on Sepolia Testnet](https://sepolia.etherscan.io/token/0x1280c3ccc4e2dbe39ceb4f75a190d49164436720)
+2. [Dann Stablecoin on Sepolia Testnet](https://sepolia.etherscan.io/address/0x6b09db0dfc4c45f731a6dff1487bc495b026385c#code)
 
 ## About
 
