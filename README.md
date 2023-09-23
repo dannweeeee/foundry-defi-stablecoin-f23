@@ -94,7 +94,7 @@ forge coverage --report debug
 ```
 
 
-## Deployment to a testnet or mainnet
+## Deployment to a Testnet or Mainnet
 
 1. Setup environment variables
 
@@ -141,7 +141,7 @@ cast send 0x54FD0AF9bF45935aA69Ecb95Cd725b18a0b0A26F "depositCollateralAndMintDs
 ```
 
 
-### Estimate gas
+### Estimate Gas
 
 You can estimate how much gas things cost by running:
 
